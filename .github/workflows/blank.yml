@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 1
+        fetch-depth: 0
         path: ${{ github.repository }}
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
@@ -29,16 +29,12 @@ jobs:
         pip install trufflehog
     - name: Run truffleHog
       run: |
-        trufflehog --regex --entropy=false ${{ github.repository }}
+        trufflehog --regex --entropy=false ${{ github.repository }} || true
         
-    - name: Notify
-      uses: innocarpe/actions-slack@v1
+    - name: Slack notification
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      uses: Ilshidur/action-slack@master
       if: always()
       with:
-        status: ${{ job.status }} # Required
-        success_text: 'Step Succeeded 🚀' # Optional
-        failure_text: 'Step Failed 😱' # Optional
-        cancelled_text: 'Step Cancelled ⚠️' # Optional
-      env:
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # Required
-        GITHUB_TOKEN: ${{ github.token }}
+        args: 'A new commit has been pushed.' # Optional
