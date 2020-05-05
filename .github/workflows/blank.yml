@@ -38,4 +38,4 @@ jobs:
         type: ${{ job.status }}
         job_name: '*Secrets check*'
         commit: true
-        url: ${{ secrets.SLACK_WEBHOOK }}
+        url: ${{ secrets.SLACK_WEBHOOK_URL }}
