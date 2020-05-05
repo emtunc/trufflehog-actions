@@ -30,3 +30,13 @@ jobs:
     - name: Run truffleHog
       run: |
         trufflehog --regex --entropy=false ${{ github.repository }} || true
+        
+    - name: Notify
+      uses: innocarpe/actions-slack@v1
+      with:
+        status: ${{ job.status }} # Required
+        success_text: 'Step Succeeded 🚀' # Optional
+        failure_text: 'Step Failed 😱' # Optional
+        cancelled_text: 'Step Cancelled ⚠️' # Optional
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # Required
