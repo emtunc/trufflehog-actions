@@ -37,5 +37,6 @@ jobs:
       with:
         type: ${{ job.status }}
         job_name: '*Secrets check*'
-        commit: false
+        commit: true
         url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        token: ${{ github.token }}
