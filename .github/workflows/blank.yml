@@ -33,6 +33,7 @@ jobs:
         
     - name: Notify
       uses: innocarpe/actions-slack@v1
+      if: always()
       with:
         status: ${{ job.status }} # Required
         success_text: 'Step Succeeded 🚀' # Optional
