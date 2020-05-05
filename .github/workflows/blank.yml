@@ -36,8 +36,6 @@ jobs:
       if: always()
       with:
         type: ${{ job.status }}
-        job_name: '*Lint Check*'
-        mention: 'here'
-        mention_if: 'failure'
-        channel: '#random'
-        url: ${{ secrets.SLACK_WEBHOOK_URL }}
+        job_name: '*Secrets check*'
+        commit: true
+        url: ${{ secrets.SLACK_WEBHOOK }}
