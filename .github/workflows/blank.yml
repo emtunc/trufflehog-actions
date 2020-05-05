@@ -40,4 +40,4 @@ jobs:
         mention: 'here'
         mention_if: 'failure'
         channel: '#random'
-        url: ${{ secrets.SLACK_WEBHOOK }}
+        url: ${{ secrets.SLACK_WEBHOOK_URL }}
