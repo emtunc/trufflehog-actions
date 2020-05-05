@@ -33,4 +33,4 @@ jobs:
         
     - name: Slack Notification
       run: |
-        python3 ${{ github.repository }}/output_to_slack.py --webhook ${{ secrets.SLACK_WEBHOOK_URL }}
+        python3 ${{ github.repository }}/output_to_slack.py --webhook ${{ secrets.SLACK_WEBHOOK_URL }} --repository ${{ github.repository	}}
