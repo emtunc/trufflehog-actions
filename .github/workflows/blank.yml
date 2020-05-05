@@ -31,10 +31,13 @@ jobs:
       run: |
         trufflehog --regex --entropy=false ${{ github.repository }} || true
         
-    - name: Slack notification
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-      uses: Ilshidur/action-slack@master
+    - name: Slack Notification
+      uses: homoluctus/slatify@master
       if: always()
       with:
-        args: 'A new commit has been pushed.' # Optional
+        type: ${{ job.status }}
+        job_name: '*Lint Check*'
+        mention: 'here'
+        mention_if: 'failure'
+        channel: '#random'
+        url: ${{ secrets.SLACK_WEBHOOK }}
