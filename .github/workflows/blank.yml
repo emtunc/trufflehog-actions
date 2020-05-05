@@ -17,7 +17,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        fetch-depth: 1
         path: ${{ github.repository }}
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v1
