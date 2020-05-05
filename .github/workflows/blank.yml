@@ -40,3 +40,4 @@ jobs:
         cancelled_text: 'Step Cancelled ⚠️' # Optional
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # Required
+        GITHUB_TOKEN: ${{ github.token }}
