@@ -28,4 +28,4 @@ jobs:
         pip install trufflehog
     - name: Run truffleHog
       run: |
-        trufflehog --regex --entropy=False ${{ github.repository }}
+        trufflehog --regex --entropy=False trufflehog-actions
