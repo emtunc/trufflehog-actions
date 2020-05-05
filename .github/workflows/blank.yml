@@ -29,3 +29,7 @@ jobs:
     - name: Run truffleHog
       run: |
         trufflehog --regex --entropy=False trufflehog-actions
+    - name: Run ls
+      run: |
+        ls
+        ls trufflehog-actions
