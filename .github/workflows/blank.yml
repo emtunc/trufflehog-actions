@@ -32,11 +32,5 @@ jobs:
         trufflehog --regex --entropy=false ${{ github.repository }} || true
         
     - name: Slack Notification
-      uses: homoluctus/slatify@master
-      if: always()
-      with:
-        type: ${{ job.status }}
-        job_name: '*Secrets check*'
-        commit: true
-        url: ${{ secrets.SLACK_WEBHOOK_URL }}
-        token: ${{ github.token }}
+      run: |
+        python3 ${{ github.repository }}/output_to_slack.py --webhook ${{ secrets.SLACK_WEBHOOK_URL }}
